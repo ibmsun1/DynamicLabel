@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ezr.bigdata</groupId>
+    <artifactId>DynamicLabel</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>FeatureEngine</module>
+        <module>KmeansDecisionTreeModel</module>
+        <module>FeatureEngineTest</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <scala.version>2.10.4</scala.version>
+        <scala2.version>2.11.8</scala2.version>
+        <hadoop.version>2.6.0-cdh5.8.0</hadoop.version>
+        <spark.version>1.6.0-cdh5.8.0</spark.version>
+        <spark2.version>2.0.0</spark2.version>
+        <joda_convert.version>1.8.1</joda_convert.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <es.version>5.1.1</es.version>
+        <ezr-common.version>2.1</ezr-common.version>
+        <es_spark.version>2.4.4</es_spark.version>
+        <es_hadoop.version>5.1.1</es_hadoop.version>
+        <hbase.version>1.2.0-cdh5.8.0</hbase.version>
+        <hive.version>1.1.0-cdh5.8.0</hive.version>
+        <spark-mllib2.version>2.0.0</spark-mllib2.version>
+        <greenplum-spark.version>1.4.0</greenplum-spark.version>
+        <mysql.version>5.1.27</mysql.version>
+        <hive-common.version>1.2.0</hive-common.version>
+        <joda-time.version>2.9.9</joda-time.version>
+    </properties>
+    
+</project>

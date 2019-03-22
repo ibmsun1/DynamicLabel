@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入database.properties文件中的信息-->
+    <properties resource="jdbc.properties"></properties>
+    <!--配置log4j-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"></setting>
+    </settings>
+    <!--typeAliases标签中package name可以直接查找到目录下的文件-->
+    <typeAliases>
+        <package name="ezr.mybatis.bean"></package>
+    </typeAliases>
+    <!--环境配置-->
+    <environments default="dev">
+        <environment id="dev">
+            <!--事务管理-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"></property>
+                <property name="url" value="${dburlOpt}"></property>
+                <property name="username" value="${usernameOpt}"></property>
+                <property name="password" value="${passwordOpt}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 通过resource加载单个的映射文件 -->
+    <mappers>
+        <mapper resource="ezr/common/mybatis/dao/OptBdShardCfgDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptBdJobStatusDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptBdEdBaseBrandDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptCrmRuleBonusSellDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptJobLastChangeDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptEdRuleCusVipIndiceConDaoMapper.xml"></mapper>
+        <mapper resource="ezr/common/mybatis/dao/OptBdCrmRuleRiskRuleDaoMapper.xml"></mapper>
+    </mappers>
+</configuration>
