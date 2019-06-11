@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FeatureEngine" />
         <module name="FeatureEngineTest" />
-        <module name="Kmeans_Descision_Py_Model" />
         <module name="KmeansDecisionTreeModel" />
       </profile>
     </annotationProcessing>
