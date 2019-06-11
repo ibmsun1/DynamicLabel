@@ -84,7 +84,7 @@ object CouponSensitive {
         rate = (sell / (noSell + sell.toDouble)).formatted("%.2f").toDouble
       }
 
-      /*vipid, brandid, copid, (status, count[核销券数], vipBindDate, sellDate)*/
+      /*vipid_brandid_copid, (status, count[核销券数], vipBindDate, sellDate)*/
       (key, (statusCount._1, rate, sell, vipBindDate, sellDate))
     }).mapValues(v=>{
       var avg = 0.0
