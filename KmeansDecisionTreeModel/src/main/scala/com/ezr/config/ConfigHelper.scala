@@ -10,8 +10,8 @@ object ConfigHelper {
 
   val myUrl = "jdbc:mysql://192.168.12.41:3306/ezp-opt"
   val myDriver = "com.mysql.jdbc.Driver"
-  val myUser = "root"
-  val myPassword = "123456"
+  val myUser = "ezwrite"
+  val myPassword = "33KlsXareQbsbrfhq2eJ"
 
   val env = "pro"
   val behavior1 = ".ods_vip_behavior1"
