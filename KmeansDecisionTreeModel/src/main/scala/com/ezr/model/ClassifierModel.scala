@@ -60,6 +60,8 @@ object ClassifierModel {
     logger.info(s"精确度: $accuracy")
 
     val subject = Utils.getSubject(args)
+
+    /*保存分类模型*/
     model.save("hdfs://uhadoop-0f1pin-master1:8020/cluster_" + shardingGrpId + "_" + subject)
     println("决策树模型: " + model.toDebugString)
     dataSet.unpersist()

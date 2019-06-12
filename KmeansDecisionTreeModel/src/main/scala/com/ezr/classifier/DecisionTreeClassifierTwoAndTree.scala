@@ -43,8 +43,9 @@ object DecisionTreeClassifierTwoAndTree {
     import spark.implicits._
 
     val subject = Utils.getSubject(args)
+
+    /*加载模型*/
     val model: DecisionTreeClassificationModel = DecisionTreeClassificationModel.load("hdfs://uhadoop-0f1pin-master1:8020/classifier_" + shardingGrpId + "_" + subject)
-//    val model: DecisionTreeClassificationModel = ClassifierModel.trainModel(spark, resultDF, args, shardingGrpId)
     val transDS = scoreDF.rdd.zipWithIndex().map(_.swap).map(v=>{
       val id = v._1
       val features = Vectors.dense(v._2.getDouble(0))
