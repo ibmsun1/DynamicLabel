@@ -89,6 +89,9 @@ object ClusterModel {
     val tableResult = ConfigHelper.env + shardGrpId + ConfigHelper.vipResults
     Utils.hiveSets(spark, ConfigHelper.env + shardGrpId, "ClusterModelBehaviorResult" + shardGrpId + Utils.getSubject(args))
     spark.createDataFrame(transRow, schema).write.mode(SaveMode.Append).insertInto(tableResult)
+
+    /*保存聚类模型*/
+    model.save("hdfs://uhadoop-0f1pin-master1:8020/cluster_" + shardGrpId + "_" + subject)
     trainDF.unpersist()
   }
 

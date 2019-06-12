@@ -41,7 +41,10 @@ object DecisionTreeClassifierTwoAndTree {
     */
   def label(spark: SparkSession, resultDF: DataFrame, scoreDF: DataFrame, sampleDF: DataFrame, args: Array[String], shardingGrpId: String) = {
     import spark.implicits._
-    val model: DecisionTreeClassificationModel = ClassifierModel.trainModel(spark, resultDF, args, shardingGrpId)
+
+    val subject = Utils.getSubject(args)
+    val model: DecisionTreeClassificationModel = DecisionTreeClassificationModel.load("hdfs://uhadoop-0f1pin-master1:8020/classifier_" + shardingGrpId + "_" + subject)
+//    val model: DecisionTreeClassificationModel = ClassifierModel.trainModel(spark, resultDF, args, shardingGrpId)
     val transDS = scoreDF.rdd.zipWithIndex().map(_.swap).map(v=>{
       val id = v._1
       val features = Vectors.dense(v._2.getDouble(0))

@@ -59,6 +59,8 @@ object ClassifierModel {
     val accuracy = evaluator.evaluate(predDF)
     logger.info(s"精确度: $accuracy")
 
+    val subject = Utils.getSubject(args)
+    model.save("hdfs://uhadoop-0f1pin-master1:8020/cluster_" + shardingGrpId + "_" + subject)
     println("决策树模型: " + model.toDebugString)
     dataSet.unpersist()
     model

@@ -54,6 +54,7 @@ object CouponSensitive {
       val key = "%s_%s_%s".format(vipid, brandid, copid)
       (key, (status, 1, vipBindDate, sellDate))
     }).reduceByKey{
+      /*统计核券数和非核券数, 用于计算券核销率*/
       case (a, b) =>{
         if (a._1 == b._1 && a._1 == 8){
           (8, (a._2 + b._2), a._3, a._4)
@@ -62,10 +63,18 @@ object CouponSensitive {
         }
       }
     }.map(v=>{
+
       val key = v._1
+
       val statusCount = v._2
+
+      /*核券数*/
       var sell = 0
+
+      /*非核券数*/
       var noSell = 0
+
+      /*券核销率*/
       var rate = 0.0
 
       if (statusCount._1 == 8){
