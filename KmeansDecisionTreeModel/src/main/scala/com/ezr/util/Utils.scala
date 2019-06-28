@@ -133,8 +133,8 @@ object Utils {
     * @param score
     * @return
     */
-  def label(score: Double, interval: (Int, Int, Int)): String ={
-    val label = if(score <= interval._1) ConfigHelper.labelOne else if(score <= interval._2 && score > interval._1) ConfigHelper.labelTwo else if(score > interval._2 && score <= interval._3) ConfigHelper.labelThree
+  def label(score: Double, interval: (Int, Int, Int, Int)): String ={
+    val label = if(score >= interval._1 && score < interval._2) ConfigHelper.labelOne else if(score >= interval._2 && score < interval._3) ConfigHelper.labelTwo else if(score > interval._3 && score <= interval._4) ConfigHelper.labelThree
     label.asInstanceOf[String]
   }
 
@@ -144,15 +144,9 @@ object Utils {
     * @param args
     * @return
     */
-  def getIntervalBySubject(subject: Int, args: Array[String]): (Int, Int, Int) ={
-    var interval: (Int, Int, Int) = (0, 0, 0)
-    if(subject == 1){
-      interval = (args(4).toInt, args(5).toInt, args(6).toInt)
-    }else if(subject == 2){
-      interval = (args(7).toInt, args(8).toInt, args(9).toInt)
-    }else if(subject == 3){
-      interval = (args(15).toInt, args(16).toInt, args(17).toInt)
-    }
+  def getIntervalBySubject(subject: Int, args: Array[String]): (Int, Int, Int, Int) ={
+    var interval: (Int, Int, Int, Int) = (0, 0, 0, 0)
+    interval = (args(0).toInt, args(1).toInt, args(2).toInt, args(3).toInt)
     interval
   }
 

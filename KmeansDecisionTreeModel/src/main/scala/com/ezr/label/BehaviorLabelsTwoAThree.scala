@@ -14,7 +14,7 @@ object BehaviorLabelsTwoAThree {
   implicit val logger = Logger.getLogger(BehaviorLabelsTwoAThree.getClass)
   def main(args: Array[String]): Unit = {
     val shardGrpId = args(args.length - 1)
-    val subject = Utils.getSubject(args)
+    val subject = 2
     val spark = SparkSession.builder().appName("BehaviorLabelsTwoAThree" + shardGrpId + subject).config("spark.serializer", "org.apache.spark.serializer.KryoSerializer").enableHiveSupport().getOrCreate()
     val tableBehavior = ConfigHelper.env + shardGrpId + ConfigHelper.vipBehavior
     val delDF: Dataset[Row] = spark.sql(s"select vipid, brandid, copid, score, behavior from  $tableBehavior  where  subject = $subject")
@@ -38,7 +38,7 @@ object BehaviorLabelsTwoAThree {
     val label = scoreDF.rdd.map(v => {
       val vipid = v.getAs[Long]("vipid")
       val score = v.getAs[Double]("score")
-      val subject = Utils.getSubject(args)
+      val subject = 2
       val interval = Utils.getIntervalBySubject(subject, args)
       val label = Utils.label(score, interval)
       (vipid, label)})
@@ -61,7 +61,7 @@ object BehaviorLabelsTwoAThree {
       val score = v._2._1._3
       val behavior = v._2._1._4
       val label = v._2._2
-      val subject = Utils.getSubject(args)
+      val subject = 2
       Row(vipId, brandId, copId, score, label, subject, behavior)})
     logger.info("behaviorLabel: " + behaviorLabel.first().apply(0) + " :vipid\t" + behaviorLabel.first().apply(1) + " :brandid\t" + behaviorLabel.first().apply(2) + " :copid\t" + behaviorLabel.first().apply(3) + " :score\t" + behaviorLabel.first().apply(4) + " :label\t"
       + behaviorLabel.first().apply(5) + " :subject\t" + behaviorLabel.first().apply(6) + "\t:behavior")

@@ -24,6 +24,6 @@ object ConfigHelper {
 
   val labelOne = "不敏感型"
   val labelTwo = "普通型"
-  val labelThree = "非常敏感型"
+  val labelThree = "敏感型"
 
 }

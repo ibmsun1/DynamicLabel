@@ -13,7 +13,7 @@ object BehaviorLabelOne {
   implicit val logger = Logger.getLogger(BehaviorLabelOne.getClass)
   def main(args: Array[String]): Unit = {
     val shardGrpId = args(args.length - 1)
-    val subject = Utils.getSubject(args)
+    val subject = 1
     val spark = SparkSession.builder().appName("BehaviorLabelOne" + shardGrpId + subject).config("spark.serializer", "org.apache.spark.serializer.KryoSerializer").enableHiveSupport().getOrCreate()
     val tableScore = ConfigHelper.env + shardGrpId + ConfigHelper.vipScores
     val scoreDF: Dataset[Row] = spark.sql(s"select vipid, brandid, copid, score from  $tableScore  where subject = $subject")
